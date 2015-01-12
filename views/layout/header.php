@@ -81,16 +81,17 @@ if(!$_SESSION['login']){
         <script src="../js/AdminLTE/app.js" type="text/javascript"></script>
         <!-- validasi -->
         <script src="../js/plugins/validate/jquery.validate.js" type="text/javascript"></script>
-
+		
 
     </head>
     <body class="skin-blue">
         <!-- header logo: style can be found in header.less -->
         <header class="header">
             <a href="../index.php" class="logo" >
-            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+             <table width="100%" border="0" cellspacing="0" cellpadding="0">
               <tr>
-                  <td align="center" width="86%"><span style="font-size:20px; font-weight:bold; color:#3700CC">SIDESI</span><br><span style="font-weight:bold;">BOJONEGORO</span></td>
+               
+                  <td width="86%" align="center"><span style="font-size:11px; font-weight:bold; color:#0FF">SISTEM INFORMASI PEDESAAN</span><br><span style="font-weight:bold;">BOJONEGORO</span></td>
               </tr>
               </tr>
             </table>

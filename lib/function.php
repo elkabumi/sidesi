@@ -1,8 +1,10 @@
 <?php
-function get_land_code(){
-	$query = mysql_query("select land_code from counters");
+
+
+function get_village_code(){
+	$query = mysql_query("select village_code from counters");
 	$result = mysql_fetch_array($query);
-	$code = ($result['land_code']) ? $result['land_code'] + 1 : 1;
+	$code = ($result['village_code']) ? $result['village_code'] + 1 : 1;
 	
 	if(strlen($code) == 1){
 		$code = "0000".$code;
@@ -14,17 +16,12 @@ function get_land_code(){
 		$code = "0".$code;
 	}
 	
-	return "HT".$code;
+	return "V".$code;
 }
-function edit_land_code(){
-	mysql_query("update counters set land_code = land_code + 1");
+function edit_village_code(){
+	mysql_query("update counters set village_code = village_code + 1");
 }
-function get_land_area($land_id){
-	$query = mysql_query("select sum(farmer_land_area) as jumlah from farmer_lands where land_id = '$land_id'");
-	$row = mysql_fetch_object($query);
-	$result = ($row->jumlah) ? $row->jumlah : 0;
-	return $result;
-}
+
 function format_rupiah($angka){
   $rupiah=number_format($angka,0,',','.');
   return $rupiah;
@@ -54,11 +51,14 @@ function get_isset($data){
 }
 
 function format_date($date){
-
-	$date = explode("-", $date);
-	$new_date = $date[2]."/".$date[1]."/".$date[0];
-
-	return $new_date;
+	if($date == "0000-00-00"){
+		return "-";
+	}else{
+		$date = explode("-", $date);
+		$new_date = $date[2]."/".$date[1]."/".$date[0];
+	
+		return $new_date;
+	}
 
 }
 function get_hour($data){
@@ -199,6 +199,13 @@ function get_abjad_besar($data){
 	$abjad = array("","a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z");
 	
 	return strtoupper($abjad[$data]);
+}
+
+function get_urutan($table, $row_id, $parameter){
+	$query = mysql_query("select count($row_id) as result from $table where $parameter");
+	$row = mysql_fetch_array($query);
+	
+	return $row['result'] + 1;
 }
 
 ?>

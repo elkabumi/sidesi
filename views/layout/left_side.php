@@ -37,9 +37,13 @@
                                 <i class="fa fa-angle-left pull-right"></i>
                             </a>
                             <ul class="treeview-menu">
-          
-                                <li><a href="seed.php?page=list"><i class="fa fa-chevron-circle-right"></i>Profil Desa</a></li>
-                                <li><a href="varieties.php?page=list"><i class="fa fa-chevron-circle-right"></i>Monografi</a></li>
+                                <li><a href="village.php"><i class="fa fa-chevron-circle-right"></i>Desa</a></li>
+                                 
+                                <li><a href="village_profile_structure.php"><i class="fa fa-chevron-circle-right"></i>Struktur Profil Desa</a></li>
+                                 
+                                <li><a href="village_monograph_structure.php?page=list"><i class="fa fa-chevron-circle-right"></i>Struktur Monografi</a></li>
+                                <li><a href="village_profile.php"><i class="fa fa-chevron-circle-right"></i>Profil Desa</a></li>
+                                <li><a href="village_monograph.php"><i class="fa fa-chevron-circle-right"></i>Monografi</a></li>
                              </ul>
                   </li>
                                 <!--<li><a href="planting_distance_model.php?page=list"><i class="fa fa-chevron-circle-right"></i>Model Jarak Tanam</a></li>

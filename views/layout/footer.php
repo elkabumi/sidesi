@@ -39,6 +39,10 @@
                     "bAutoWidth": false
                 });
 				
+				  $('#example_no_order_by').dataTable({            
+                    "bSort": false
+                });
+				
 				$('#example99').dataTable({
                    
                     "bFilter": false,

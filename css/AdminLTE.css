@@ -436,7 +436,6 @@ body > .header .navbar .nav > li > a:hover > .label {
 body > .header .logo {
   float: left;
   font-size: 14px;
-  padding-left:15px;
   padding-top:20px;
   width: 220px;
   height: 80px;
@@ -2381,7 +2380,7 @@ Component: timeline
   
   font-weight: 300;
   color: #fff;
-  background:#00A65A;
+  background:#00ACD6;
   
 }
 .form-box .body{
