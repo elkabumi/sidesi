@@ -83,6 +83,7 @@ switch ($page) {
 			}
 			
 				$data_detail = "
+									'',
 									'".$row['vms_id']."',
 									'$village_monograph_id',
 									'".$row['vms_parent_id']."',
@@ -145,7 +146,7 @@ switch ($page) {
 					$data_detail = "
 										vms_answer = '$field'
 										";
-					update_config("village_monograph_details", $data_detail, $row['vms_id'], "vms_id");
+					update_config("village_monograph_details", $data_detail, $row['vmd_id'], "vmd_id");
 			} 
 				
 				

@@ -67,11 +67,14 @@ switch ($page) {
 					'$date', 
 					'$date', 
 					''
-			";
-		
-			create_config("village_profiles", $data);
-			$village_profile_id = mysql_insert_id();	
+			"; 
+
 			
+			create_config("village_profiles", $data);
+			$village_profile_id = mysql_insert_id();
+
+
+		
 			$query = select_structure();
 			while($row = mysql_fetch_array($query)){
 				$get_child = get_child($row['vps_id']);
@@ -83,6 +86,7 @@ switch ($page) {
 				}
 				
 					$data_detail = "
+										'',
 										'".$row['vps_id']."',
 										'$village_profile_id',
 										'".$row['vps_parent_id']."',
@@ -94,10 +98,12 @@ switch ($page) {
 										'$field'
 										";
 					create_config("village_profile_details", $data_detail);
+										
 			} 
 				
 				
 				header('Location: village_profile.php?page=list&did=1');
+				
 		}
 		
 	
@@ -112,20 +118,23 @@ switch ($page) {
 		$i_village_id = get_isset($i_village_id);
 		$date = date("Y-m-d");
 
-		$get_village_old = get_village_old($id);
+			$get_village_old = get_village_old($id);
 
-		echo $i_village_id."-".$get_village_old;
-		
-		if($i_village_id != $get_village_old){
-			$check_edit = check_edit($i_village_id, $get_village_old);
-		}else{
-			$check_edit = 0;
-		}
-			if($check_edit > 0 ){
-				header("Location: village_profile.php?page=form&id=$id&err=1");
-
-			}else{
+			//echo $i_village_id."-".$get_village_old;
 			
+			if($i_village_id != $get_village_old){
+				$check_edit = check_edit($i_village_id, $get_village_old);
+				
+			}else{
+				$check_edit = 0;
+				
+			}
+				
+				if($check_edit > 0 ){
+					header("Location: village_profile.php?page=form&id=$id&err=1");
+					
+				}else{
+					
 				$data = "
 						village_id = '$i_village_id',
 						village_profile_updated_date = '$date'
@@ -146,11 +155,13 @@ switch ($page) {
 						$data_detail = "
 											vps_answer = '$field'
 											";
-						update_config("village_profile_details", $data_detail, $row['vps_id'], "vps_id");
+						update_config("village_profile_details", $data_detail, $row['vpd_id'], "vpd_id");
 				} 
 					
 					
 					header('Location: village_profile.php?page=list&did=2');
+
+
 				}
 			
 

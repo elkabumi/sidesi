@@ -18,7 +18,7 @@ function select_structure(){
 function select_structure_edit($id){
 	$query = mysql_query("SELECT a.*, b.number_type_id as number_type_id_parent, b.vps_child_separator as vps_child_separator_parent 
 										   						FROM village_profile_details a 
-										   						left JOIN village_profile_details b on b.vps_id = a.vps_parent_id 
+										   						left JOIN village_profile_details b on b.vps_id = a.vps_parent_id and b.village_profile_id = '$id'
 																WHERE a.village_profile_id = '$id'
 										   						ORDER BY a.vps_parent_id, a.vps_number ASC");
 	return $query;
