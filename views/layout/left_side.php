@@ -42,69 +42,65 @@
                                 <li><a href="village_profile_structure.php"><i class="fa fa-chevron-circle-right"></i>Struktur Profil Desa</a></li>
                                  
                                 <li><a href="village_monograph_structure.php?page=list"><i class="fa fa-chevron-circle-right"></i>Struktur Monografi</a></li>
-                                <li><a href="village_profile.php"><i class="fa fa-chevron-circle-right"></i>Profil Desa</a></li>
-                                <li><a href="village_monograph.php"><i class="fa fa-chevron-circle-right"></i>Monografi</a></li>
                              </ul>
                   </li>
-                                <!--<li><a href="planting_distance_model.php?page=list"><i class="fa fa-chevron-circle-right"></i>Model Jarak Tanam</a></li>
-                                <li><a href="treatment_type.php?page=list"><i class="fa fa-chevron-circle-right"></i>Tipe Treatment</a></li>
-                                <li><a href="location.php?page=list"><i class="fa fa-chevron-circle-right"></i>Lokasi</a></li>
-                               
-                             	
-                            </ul>
-                  </li>
+                                
                   
                     <li <?php if(isset($_SESSION['menu_active']) && $_SESSION['menu_active'] == 2){ echo "class='active'"; } ?>>
-                            <a href="farmer.php">
+                            <a href="village_profile.php">
                                 <i class="fa fa-user"></i>
-                                <span>Petani</span>
+                                <span>Profil dan Potensi Desa</span>
                                
                             </a>
-                            
+                          
                   </li>
-                      <li <?php if(isset($_SESSION['menu_active']) && $_SESSION['menu_active'] == 3){ echo "class='active'"; } ?>>
-                            <a href="land.php">
+                       <li <?php if(isset($_SESSION['menu_active']) && $_SESSION['menu_active'] == 3){ echo "class='active'"; } ?>>
+                            <a href="village_monograph.php">
                                 <i class="fa fa-pagelines"></i>
-                                <span>Hamparan Tanah</span>
+                                <span>Monografi Desa</span>
 
                                
                             </a>
-                            
-                 
-                  
+                            </li>
+  
+                   
                         <li <?php if(isset($_SESSION['menu_active']) && $_SESSION['menu_active'] == 4){ echo "class='active'"; } ?>>
-                            <a href="planting_process.php">
+                            <a href="premium.php">
                                 <i class="fa  fa-calendar"></i>
-                                <span>Proses Tanam</span>
+                                <span>Data Kader Posyandu</span>
                                
                             </a>
                             
                   </li>
                   
-                  
+                
                    <li <?php if(isset($_SESSION['menu_active']) && $_SESSION['menu_active'] == 5){ echo "class='active'"; } ?>>
-                            <a href="treatment.php">
+                            <a href="premium.php">
                                 <i class="fa fa-leaf"></i>
-                                <span>Treatment</span>
+                                <span>Data Puskesmas</span>
                                
                             </a>
                             
                   </li>
-                 
-                   <li class="treeview <?php if(isset($_SESSION['menu_active']) && $_SESSION['menu_active'] == 6){ echo "active"; }?>">
-                            <a href="#">
-                                <i class="fa fa-search"></i>
-                                <span>Pencarian</span>
-                                <i class="fa fa-angle-left pull-right"></i>
-                            </a>
-                            <ul class="treeview-menu">
-                                
-                                <li><a href="search_harvest.php?page=list"><i class="fa fa-chevron-circle-right"></i>Panen</a></li>
-                                <li><a href="search_farmer.php?page=list"><i class="fa fa-chevron-circle-right"></i>Petani</a></li>
+
+                   <li <?php if(isset($_SESSION['menu_active']) && $_SESSION['menu_active'] == 6){ echo "class='active'"; } ?>>
+                            <a href="premium.php">
+                                <i class="fa fa-leaf"></i>
+                                <span>Data Pilkada</span>
                                
-                             
-                            </ul>
-                  </li>-->
+                            </a>
+                            
+                  </li>
+
+                  <li <?php if(isset($_SESSION['menu_active']) && $_SESSION['menu_active'] == 7){ echo "class='active'"; } ?>>
+                            <a href="premium.php">
+                                <i class="fa fa-leaf"></i>
+                                <span>Pasar Online</span>
+                               
+                            </a>
+                            
+                  </li>
+                
                         
                     <?php
                     if($_SESSION['user_type_id'] == 1){
