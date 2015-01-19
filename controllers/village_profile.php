@@ -112,7 +112,7 @@ switch ($page) {
 				
 				} 
 				
-				
+				header('Location: village_profile.php?page=list&did=1');
 				
 		}else{
 			
@@ -157,8 +157,9 @@ switch ($page) {
 										";
 					create_config("village_profile_details", $data_detail);	
 			}
+			header('Location: village_profile.php?page=list&did=1');
 		}
-						header('Location: village_profile.php?page=list&did=1');
+						
 
 	
 	break;
