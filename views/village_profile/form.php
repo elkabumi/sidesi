@@ -52,10 +52,21 @@
                                         ?>
                                         </select>
                                       </div>
-
-                                        
-                                      
-                                       
+                                      <div class="form-group">
+										<label>Tahun</label>
+										<select name="i_type" size="1" class="selectpicker show-tick form-control" data-live-search="true">
+										<?php
+										$year = date("Y");
+										$year_awal = $year - 5;
+										$year_akhir = $year + 5;
+										for($y=$year_akhir; $y>=$year_awal; $y--){
+										?>
+											<option value="<?= $y ?>"><?= $y ?></option>
+										<?php
+										}
+										?>
+										</select>
+										</div>
                                         </div>
                                         <div style="clear:both;"></div>
                                      

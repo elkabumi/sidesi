@@ -7,6 +7,12 @@ function select(){
 	return $query;
 }
 
+function get_period($id){
+	$query = mysql_query("SELECT * from village_profile_periods 
+						  where village_profile_id = '".$id."'");
+	return $query;
+}
+
 function select_structure(){
 	$query = mysql_query("SELECT a.*, b.number_type_id as number_type_id_parent, b.vps_child_separator as vps_child_separator_parent 
 										   						FROM village_profile_structures a 
@@ -18,8 +24,8 @@ function select_structure(){
 function select_structure_edit($id){
 	$query = mysql_query("SELECT a.*, b.number_type_id as number_type_id_parent, b.vps_child_separator as vps_child_separator_parent 
 										   						FROM village_profile_details a 
-										   						left JOIN village_profile_details b on b.vps_id = a.vps_parent_id and b.village_profile_id = '$id'
-																WHERE a.village_profile_id = '$id'
+										   						left JOIN village_profile_details b on b.vps_id = a.vps_parent_id and b.vpp_id = '$id'
+																WHERE a.vpp_id = '$id'
 										   						ORDER BY a.vps_parent_id, a.vps_number ASC");
 	return $query;
 }
@@ -56,19 +62,39 @@ function get_child($id){
 
 function check_save($village_id){
 	$query = mysql_query("select count(village_id) as result
-							from village_profiles
+							from village_profiles 
 						where village_id = '".$village_id."'");
 	$result = mysql_fetch_array($query);
 	$row = $result['result'];
 	return $row;
 }
 
+function check_double($village_id,$type_id){
+	$query = mysql_query("select count(village_id) as result
+							from village_profiles a
+							join village_profile_periods b on b.village_profile_id = a.village_profile_id
+						where a.village_id = '".$village_id."' and b.vpp_year = '".$type_id."'");
+	$result = mysql_fetch_array($query);
+	$row = $result['result'];
+	return $row;
+}
+
 function get_village_old($id){
-	$query = mysql_query("select village_id
-							from village_profiles
-						where village_profile_id = '".$id."'");
+	$query = mysql_query("select a.village_id 
+							from village_profiles a
+							join village_profile_periods b on b.village_profile_id = a.village_profile_id
+						where b.vpp_id = '".$id."'");
 	$result = mysql_fetch_array($query);
 	$row = $result['village_id'];
+	return $row;
+}
+
+function get_village_profil_id($village_id){
+	$query = mysql_query("select village_profile_id
+							from village_profiles 
+						where village_id = '".$village_id."'");
+	$result = mysql_fetch_array($query);
+	$row = $result['village_profile_id'];
 	return $row;
 }
 

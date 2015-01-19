@@ -22,7 +22,7 @@ switch ($page) {
 	case 'form':
 		get_header();
 		
-		$close_button = "village_profile.php?page=list";
+		$close_button = "village_profile.php?page=list_period";
 
 		$id = (isset($_GET['id'])) ? $_GET['id'] : null;
 		
@@ -47,33 +47,44 @@ switch ($page) {
 		get_footer();
 	break;
 	
+	case 'list_period':
+		get_header($title);
+		
+		$id = (isset($_GET['id'])) ? $_GET['id'] : null;
+
+		$query = get_period($id);
+		$add_button = "village_profile.php?page=form";
+
+		include '../views/village_profile/list_period.php';
+		get_footer();
+	break;
+	
 	
 	case 'save':
 	
 		extract($_POST);
 
 		$i_village_id = get_isset($i_village_id);
+		$i_type = get_isset($i_type);
 		$date = date("Y-m-d");
 		
+		$check_double = check_double($i_village_id,$i_type);
 		$check_save = check_save($i_village_id);
-		if($check_save > 0 ){
+		if($check_double > 0 ){
 
 			header('Location: village_profile.php?page=form&err=1');
 
-		}else{
-
-			$data = "'',
-					'$i_village_id',
-					'$date', 
-					'$date', 
-					''
-			"; 
+		}elseif($check_save > 0){
 
 			
-			create_config("village_profiles", $data);
-			$village_profile_id = mysql_insert_id();
-
-
+			$village_profile_id = get_village_profil_id($i_village_id);
+			
+			$data2 = "'',
+					 '$village_profile_id',
+					 '$i_type'";
+					 
+			create_config("village_profile_periods", $data2);
+			$vpp_id = mysql_insert_id();
 		
 			$query = select_structure();
 			while($row = mysql_fetch_array($query)){
@@ -88,7 +99,7 @@ switch ($page) {
 					$data_detail = "
 										'',
 										'".$row['vps_id']."',
-										'$village_profile_id',
+										'$vpp_id',
 										'".$row['vps_parent_id']."',
 										'".$row['vps_level']."',
 										'".$row['number_type_id']."',
@@ -97,19 +108,62 @@ switch ($page) {
 										'".$row['vps_name']."',
 										'$field'
 										";
-					create_config("village_profile_details", $data_detail);
-										
-			} 
+					create_config("village_profile_details", $data_detail);				
+				
+				} 
 				
 				
-				header('Location: village_profile.php?page=list&did=1');
 				
-		}
+		}else{
+			
+			$data = "'',
+					'$i_village_id',
+					'$date', 
+					'$date', 
+					''
+			";
+			
+			create_config("village_profiles", $data);
+			$village_profile_id = mysql_insert_id();
+			
+			$data2 = "'',
+					 '$village_profile_id',
+					 '$i_type'";
+					 
+			create_config("village_profile_periods", $data2);
+			$vpp_id = mysql_insert_id();
 		
+			$query = select_structure();
+			while($row = mysql_fetch_array($query)){
+				$get_child = get_child($row['vps_id']);
+				
+				if($get_child == 0){
+					$field = $_POST["i_field_".$row['vps_id']];
+				}else{
+					$field = "";
+				}
+				
+					$data_detail = "
+										'',
+										'".$row['vps_id']."',
+										'$vpp_id',
+										'".$row['vps_parent_id']."',
+										'".$row['vps_level']."',
+										'".$row['number_type_id']."',
+										'".$row['vps_child_separator']."',
+										'".$row['vps_number']."',
+										'".$row['vps_name']."',
+										'$field'
+										";
+					create_config("village_profile_details", $data_detail);	
+			}
+		}
+						header('Location: village_profile.php?page=list&did=1');
+
 	
 	break;
 	
-
+	
 	case 'edit':
 	
 		$id = get_isset($_GET['id']);

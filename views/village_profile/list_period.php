@@ -56,11 +56,8 @@
                                         <thead>
                                             <tr>
                                                 <th>No</th>
-                                                <th>Kode</th>
-                                                <th>Nama Desa</th>
-                                                <th>Tanggal Pembuatan</th>
-                                                <th>Perubahan Terakhir</th>
-                                                <th>Pelaporan Terakhir</th>
+                                                <th>Id profil desa</th>
+                                                <th>Priode</th>
                                                 <th>Config</th> 
                                             </tr>
                                         </thead>
@@ -71,14 +68,11 @@
                                             ?>
                                             <tr>
                                               <td><?= $no?></td>
-                                              <td><?= $row['village_code']?></td>
-                                              <td><?= $row['village_name']?></td>
-                                              <td><?= format_date($row['village_profile_created_date']) ?></td>
-                                              <td><?= format_date($row['village_profile_updated_date'])?></td>
-                                              <td><?= format_date($row['village_profile_reported_date'])?></td> 
+                                              <td><?= $row['village_profile_id']?></td>
+                                              <td><?= $row['vpp_year']?></td>
                                               <td style="text-align:center;">
 
-                                                    <a href="village_profile.php?page=list_period&id=<?= $row['village_profile_id']?>" class="btn btn-default" ><i class="fa fa-pencil"></i></a>
+                                                    <a href="village_profile.php?page=form&id=<?= $row['vpp_id']?>" class="btn btn-default" ><i class="fa fa-pencil"></i></a>
                                                     <a href="javascript:void(0)" onclick="confirm_delete(<?= $row['village_profile_id']; ?>,'village_profile.php?page=delete&id=')" class="btn btn-default" ><i class="fa fa-trash-o"></i></a>
 
                                                 </td>
