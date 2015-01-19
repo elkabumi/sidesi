@@ -65,7 +65,7 @@
   
                    
                         <li <?php if(isset($_SESSION['menu_active']) && $_SESSION['menu_active'] == 4){ echo "class='active'"; } ?>>
-                            <a href="premium.php">
+                            <a href="premium.php?type=1">
                                 <i class="fa  fa-calendar"></i>
                                 <span>Data Kader Posyandu</span>
                                
@@ -75,7 +75,7 @@
                   
                 
                    <li <?php if(isset($_SESSION['menu_active']) && $_SESSION['menu_active'] == 5){ echo "class='active'"; } ?>>
-                            <a href="premium.php">
+                            <a href="premium.php?type=2">
                                 <i class="fa fa-leaf"></i>
                                 <span>Data Puskesmas</span>
                                
@@ -84,7 +84,7 @@
                   </li>
 
                    <li <?php if(isset($_SESSION['menu_active']) && $_SESSION['menu_active'] == 6){ echo "class='active'"; } ?>>
-                            <a href="premium.php">
+                            <a href="premium.php?type=3">
                                 <i class="fa fa-leaf"></i>
                                 <span>Data Pilkada</span>
                                
@@ -93,7 +93,7 @@
                   </li>
 
                   <li <?php if(isset($_SESSION['menu_active']) && $_SESSION['menu_active'] == 7){ echo "class='active'"; } ?>>
-                            <a href="premium.php">
+                            <a href="premium.php?type=4">
                                 <i class="fa fa-leaf"></i>
                                 <span>Pasar Online</span>
                                
@@ -107,7 +107,7 @@
 					?>
                  
                   
-                  <li <?php if(isset($_SESSION['menu_active']) && $_SESSION['menu_active'] == 7){ echo "class='active'"; } ?>>
+                  <li <?php if(isset($_SESSION['menu_active']) && $_SESSION['menu_active'] == 8){ echo "class='active'"; } ?>>
                             <a href="user.php">
                                 <i class="fa fa-users"></i>
                                 <span>User</span>

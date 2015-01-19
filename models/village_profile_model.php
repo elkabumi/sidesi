@@ -38,6 +38,14 @@ function read_id($id){
 	return $result;
 }
 
+function read_id_period($id){
+	$query = mysql_query("select *
+			from village_profile_periods 
+			where vpp_id = '$id'");
+	$result = mysql_fetch_object($query);
+	return $result;
+}
+
 
 function create_config($table, $data){
 	mysql_query("insert into $table values(".$data.")");
@@ -51,6 +59,11 @@ function delete($id){
 	mysql_query("delete from village_profiles  where village_profile_id = '$id'");
 	mysql_query("delete from village_profile_details  where village_profile_id = '$id'");
 }
+
+function delete_village_profile_detail($id){
+	mysql_query("delete from village_profile_details  where vpp_id = '$id'");
+}
+
 function get_child($id){
 	$query = mysql_query("select count(vps_id) as result
 							from village_profile_structures
@@ -105,6 +118,17 @@ function check_edit($village_id, $village_old){
 	$result = mysql_fetch_array($query);
 	$row = $result['result'];
 	return $row;
+}
+
+function get_village_data($id){
+	$query = mysql_query("select a.village_id, village_name
+						from village_profiles a
+						join villages b on b.village_id = a.village_id
+						where village_profile_id = '$id'
+						");
+	$result = mysql_fetch_array($query);
+
+	return $result;
 }
 
 

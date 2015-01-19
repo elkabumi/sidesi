@@ -44,6 +44,49 @@
 
                 <!-- Main content -->
                 <section class="content">
+
+                     <div class="row">
+                      
+                        <!-- right column -->
+                        <div class="col-md-12">
+                            <!-- general form elements disabled -->
+
+                          
+                          <div class="title_page"> <?= $title ?></div>
+
+                             <form action="<?= $action?>" method="post" enctype="multipart/form-data" role="form">
+
+                            <div class="box box-cokelat">
+                                
+                               
+                                <div class="box-body">
+                                    
+                                        <!-- text input -->
+                                     
+                                        <div class="col-md-12">
+                                        
+                                        <div class="form-group">
+                                        <label>Desa </label>
+                                         <input readonly="readonly" type="text" name="i_name" class="form-control" placeholder="Enter name ..." value="<?= $village_name ?>"/>
+                                      </div>
+                                  
+                                        </div>
+                                        <div style="clear:both;"></div>
+                                     
+                                </div><!-- /.box-body -->
+                                
+                                
+                                  <div class="box-footer">
+                               
+                                <a href="<?= $close_button?>" class="btn btn-success" >Close</a>
+                             
+                             </div>
+                            
+                            </div><!-- /.box -->
+                       </form>
+                        </div><!--/.col (right) -->
+                    </div>   <!-- /.row -->
+
                     <div class="row">
                         <div class="col-xs-12">
                             
@@ -56,7 +99,7 @@
                                         <thead>
                                             <tr>
                                                 <th>No</th>
-                                                <th>Id profil desa</th>
+                                                
                                                 <th>Priode</th>
                                                 <th>Config</th> 
                                             </tr>
@@ -68,11 +111,11 @@
                                             ?>
                                             <tr>
                                               <td><?= $no?></td>
-                                              <td><?= $row['village_profile_id']?></td>
+                                              
                                               <td><?= $row['vpp_year']?></td>
                                               <td style="text-align:center;">
 
-                                                    <a href="village_profile.php?page=form&id=<?= $row['vpp_id']?>" class="btn btn-default" ><i class="fa fa-pencil"></i></a>
+                                                    <a href="village_profile.php?page=form_period&id=<?= $row['vpp_id']?>&vp_id=<?= $_GET['id'] ?>" class="btn btn-default" ><i class="fa fa-pencil"></i></a>
                                                     <a href="javascript:void(0)" onclick="confirm_delete(<?= $row['village_profile_id']; ?>,'village_profile.php?page=delete&id=')" class="btn btn-default" ><i class="fa fa-trash-o"></i></a>
 
                                                 </td>

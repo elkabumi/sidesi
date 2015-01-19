@@ -6,7 +6,7 @@ $page = null;
 $page = (isset($_GET['page'])) ? $_GET['page'] : "list";
 $title = ucfirst("user");
 
-$_SESSION['menu_active'] = 7;
+$_SESSION['menu_active'] = 8;
 
 switch ($page) {
 	case 'list':
@@ -37,7 +37,7 @@ switch ($page) {
 			
 			//inisialisasi
 			$row = new stdClass();
-			$get_code = get_user_code();
+			$get_code = '';//get_user_code();
 
 			$row->user_code = $get_code;
 			$row->user_name = false;

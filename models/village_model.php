@@ -1,7 +1,7 @@
 <?php
 
 function select(){
-	$query = mysql_query("select * from villages order by village_id");
+	$query = mysql_query("select * from villages where right(village_code, 4) <> '0000' order by village_id");
 	return $query;
 }
 
