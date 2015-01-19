@@ -9,7 +9,7 @@
                 <i class="fa fa-warning"></i>
                 <button class="close" aria-hidden="true" data-dismiss="alert" type="button">×</button>
                 <b>Simpan gagal !</b>
-               Desa sudah pernah diinputkan
+               Periode sudah pernah diinputkan
                 </div>
            
                 </section>
@@ -41,18 +41,10 @@
                                         
                                         <div class="form-group">
                                         <label>Desa </label>
-                                        <select name="i_village_id"  class="selectpicker show-tick form-control" data-live-search="true">
-                                        <?php
-                                        $query_village = mysql_query("select * from villages order by village_id");
-                                        while($row_village = mysql_fetch_array($query_village)){
-                                        ?>
-                                        <option value="<?= $row_village['village_id']?>" <?php if($row_village['village_id'] == $row->village_id){ ?> selected="selected"<?php }?>><?= $row_village['village_code'] ." - ". $row_village['village_name'] ?></option>
-                                        <?php
-                                        }
-                                        ?>
-                                        </select>
+                                         <input readonly="readonly" type="hidden" name="i_village_id" class="form-control" placeholder="Enter name ..." value="<?= $village_id ?>"/>
+                                       <input readonly="readonly" type="text" name="i_village_name" class="form-control" placeholder="Enter name ..." value="<?= $village_name ?>"/>
                                       </div>
-                                        <div class="form-group">
+                                      <div class="form-group">
 										<label>Tahun</label>
 										<select name="i_type" size="1" class="selectpicker show-tick form-control" data-live-search="true">
 										<?php
@@ -61,14 +53,12 @@
 										$year_akhir = $year + 5;
 										for($y=$year_akhir; $y>=$year_awal; $y--){
 										?>
-											<option value="<?= $y ?>"><?= $y ?></option>
+											<option value="<?= $y ?>" <?php if($row->vpp_year == $y){ ?> selected<?php } ?>><?= $y ?></option>
 										<?php
 										}
 										?>
 										</select>
 										</div>
-                                      
-                                       
                                         </div>
                                         <div style="clear:both;"></div>
                                      
